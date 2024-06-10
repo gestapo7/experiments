@@ -54,6 +54,7 @@ echo "{
     \"cover\": true,
     \"raw_cover\" : true,
     \"max_crash_logs\": 100,
+    \"fuzzing_vms\": 3,
     \"vm\": {
         \"count\": 2,
         \"kernel\": \"$KERNEL/arch/x86/boot/bzImage\",
