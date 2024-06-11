@@ -37,6 +37,7 @@ fi
 
 WORKDIR=/home/lxw/experiment0/linux-nexts/workdir-linux-next-${size}M
 CFG=/home/lxw/experiment0/linux-nexts/linux-next-${size}M.cfg
+LOG=/home/lxw/experiment0/linux-nexts/linux-next-log-${size}M.log
 IMAGE=/home/lxw/experiment0/image
 KERNEL=/home/lxw/experiment0/linux-next/
 
@@ -54,8 +55,9 @@ echo "{
     \"cover\": true,
     \"raw_cover\" : true,
     \"max_crash_logs\": 100,
+    \"fuzzing_vms\" : 3,
     \"vm\": {
-        \"count\": 2,
+        \"count\": 4,
         \"kernel\": \"$KERNEL/arch/x86/boot/bzImage\",
         \"cpu\": 4,
         \"cmdline\": \"selinux=0\",
@@ -63,4 +65,4 @@ echo "{
     }
 }" > $CFG
 
-timeout 7d $SYZKALLER/bin/syz-manager -config $CFG
+timeout 7d $SYZKALLER/bin/syz-manager -config $CFG > $LOG
